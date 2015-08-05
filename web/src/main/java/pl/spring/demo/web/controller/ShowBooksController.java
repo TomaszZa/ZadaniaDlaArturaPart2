@@ -33,8 +33,11 @@ public class ShowBooksController {
 	@RequestMapping(value = "DeletingInformationPage/{id}", method = RequestMethod.GET)
 	public String finalPage(Map<String, Object> params, @PathVariable("id") Long id) {
 		System.out.println(id);
+
+		params.put("title", bookService.findTitleById(id));
+		params.put("booksCount", 1);
 		bookService.deleteBookByID(id);
-		// params.put("title", book.);
+
 		return "DeletingInformationPage";
 	}
 }

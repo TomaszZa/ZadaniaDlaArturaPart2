@@ -47,4 +47,16 @@ public class BookServiceImpl implements BookService {
 	public void deleteBookByID(Long id) {
 		bookRepository.delete(id);
 	}
+
+	@Override
+	public String findTitleById(Long id) {
+		String title = null;
+		List<BookTo> allBooks = BookMapper.map2To(bookRepository.findAll());
+		for (BookTo bookTo : allBooks) {
+			if (bookTo.getId() == id)
+				title = bookTo.getTitle();
+		}
+
+		return title;
+	}
 }
