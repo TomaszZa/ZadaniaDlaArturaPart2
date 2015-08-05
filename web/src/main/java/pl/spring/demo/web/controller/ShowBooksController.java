@@ -22,4 +22,18 @@ public class ShowBooksController {
 		params.put("books", allBooks);
 		return "bookListTable";
 	}
+
+	@RequestMapping(value = "/redirect", method = RequestMethod.GET)
+	public String redirect() {
+		// @PathVariable("book") BookTo book
+		return "redirect:DeletingInformationPage";
+	}
+
+	@RequestMapping(value = "/DeletingInformationPage", method = RequestMethod.GET)
+	public String finalPage(Map<String, Object> params) {
+		// , @PathVariable("book") BookTo book
+		// bookService.deleteBookByID(id);
+		// params.put("title", book);
+		return "DeletingInformationPage";
+	}
 }

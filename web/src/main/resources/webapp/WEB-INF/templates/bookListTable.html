@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html xmlns:th="http://thymeleaf.org">
 <head lang="en">
@@ -13,15 +14,23 @@
 </head>
 
 <body>
-
+                       
    <table>
       <tr>
+         <th>Kasowanie</th>
          <th>Id</th>
          <th>Tytul</th>
          <th>Autor</th>
       </tr>
-                       <div th:each="book : ${books}">  
+      
+                       <div th:each="book : ${books}">
                         <tr>
+                        <td>
+                        <form action="/workshop/redirect" method="GET">
+                        <input type="submit" onclick="" value="Delete">
+                        </input>
+                        </form>
+                        </td>
                         <td>
                          <p th:text="${book.id}">
                              id
@@ -39,9 +48,10 @@
                                authors
                          </p>
                          </td>
-                         </tr>      
+                         </tr>    
                        </div>   
    </table>
+                   
 </body>
 </html>
 
