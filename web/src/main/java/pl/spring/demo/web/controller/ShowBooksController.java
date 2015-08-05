@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -23,13 +24,13 @@ public class ShowBooksController {
 		return "bookListTable";
 	}
 
-	@RequestMapping(value = "/redirect", method = RequestMethod.GET)
-	public String redirect() {
-		// @PathVariable("book") BookTo book
-		return "redirect:DeletingInformationPage";
+	@RequestMapping(value = "/redirect/{id}", method = RequestMethod.GET)
+	public String redirect(@PathVariable("id") Long id) {
+		System.out.println(id);
+		return "redirect:../DeletingInformationPage";
 	}
 
-	@RequestMapping(value = "/DeletingInformationPage", method = RequestMethod.GET)
+	@RequestMapping(value = "DeletingInformationPage", method = RequestMethod.GET)
 	public String finalPage(Map<String, Object> params) {
 		// , @PathVariable("book") BookTo book
 		// bookService.deleteBookByID(id);

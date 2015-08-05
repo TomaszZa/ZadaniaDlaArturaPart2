@@ -26,10 +26,12 @@
                        <div th:each="book : ${books}">
                         <tr>
                         <td>
-                        <form action="/workshop/redirect" method="GET">
+                        
+                        <form th:action="@{/redirect/{value}(value=${book.id})}" method="GET">
                         <input type="submit" onclick="" value="Delete">
                         </input>
                         </form>
+                        
                         </td>
                         <td>
                          <p th:text="${book.id}">
