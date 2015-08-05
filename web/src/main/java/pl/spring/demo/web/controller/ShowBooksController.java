@@ -26,15 +26,15 @@ public class ShowBooksController {
 
 	@RequestMapping(value = "/redirect/{id}", method = RequestMethod.GET)
 	public String redirect(@PathVariable("id") Long id) {
-		System.out.println(id);
-		return "redirect:../DeletingInformationPage";
+
+		return "redirect:../DeletingInformationPage/" + id;
 	}
 
-	@RequestMapping(value = "DeletingInformationPage", method = RequestMethod.GET)
-	public String finalPage(Map<String, Object> params) {
-		// , @PathVariable("book") BookTo book
-		// bookService.deleteBookByID(id);
-		// params.put("title", book);
+	@RequestMapping(value = "DeletingInformationPage/{id}", method = RequestMethod.GET)
+	public String finalPage(Map<String, Object> params, @PathVariable("id") Long id) {
+		System.out.println(id);
+		bookService.deleteBookByID(id);
+		// params.put("title", book.);
 		return "DeletingInformationPage";
 	}
 }
