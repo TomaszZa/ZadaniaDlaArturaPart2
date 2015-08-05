@@ -12,14 +12,14 @@ import pl.spring.demo.service.BookService;
 import pl.spring.demo.to.BookTo;
 
 @Controller
-public class BookController {
+public class ShowBooksController {
 	@Autowired
 	private BookService bookService;
 
-	@RequestMapping(value = "/books", method = RequestMethod.GET)
-	public String bookList(Map<String, Object> params) {
+	@RequestMapping(value = "/ShowBooks", method = RequestMethod.GET)
+	public String tableFromBooks(Map<String, Object> params) {
 		final List<BookTo> allBooks = bookService.findAllBooks();
 		params.put("books", allBooks);
-		return "bookList";
+		return "bookListTable";
 	}
 }
