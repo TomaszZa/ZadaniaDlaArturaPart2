@@ -19,7 +19,9 @@ public class ShowBooksController {
 
 	@RequestMapping(value = "/ShowBooks", method = RequestMethod.GET)
 	public String tableFromBooks(Map<String, Object> params) {
-		final List<BookTo> allBooks = bookService.findAllBooks();
+		final List<BookTo> allBooks = bookService.findAllBooks(); // 1 dlaczego
+																	// final ?
+																	// po co ?
 		params.put("books", allBooks);
 		return "bookListTable";
 	}
@@ -30,14 +32,17 @@ public class ShowBooksController {
 		return "redirect:../DeletingInformationPage/" + id;
 	}
 
-	@RequestMapping(value = "DeletingInformationPage/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "/DeletingInformationPage/{id}", method = RequestMethod.GET)
 	public String finalPage(Map<String, Object> params, @PathVariable("id") Long id) {
-		System.out.println(id);
-
 		params.put("title", bookService.findTitleById(id));
 		params.put("booksCount", 1);
-		bookService.deleteBookByID(id);
+		params.put("id", id);
 
+		try {
+			bookService.deleteBookByID(id);
+		} catch (Exception exc) {
+			return "NoBookWithSuchId";
+		}
 		return "DeletingInformationPage";
 	}
 }

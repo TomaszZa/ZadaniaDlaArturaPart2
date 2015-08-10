@@ -1,3 +1,18 @@
 .sample {
     color: red;
 }
+.meine {
+	color: orange;
+}
+table.meine {
+	background-color: #00ff00;
+}
+body.meine {
+	background-color: #0000ff;
+}
+p.warning{
+	color:white;
+}
+body.warning{
+	background-color: #ff0000;
+}

@@ -2,11 +2,11 @@
 <html xmlns:th="http://thymeleaf.org">
 <head lang="en">
     <meta charset="UTF-8"/>
-    <title>Ksiaka Usunieta</title>
+    <title>Error</title>
     <link rel="stylesheet" th:href="@{/static/application.css}" href="/static/application.css" />
 </head>
 
-<body class="warning">
-   <p class="warning" th:inline="text">Książka o tytule [[${title}]] została usunięta</p>
+<body>
+   <p th:inline="text">Książka o id [[${id}]] nie istnieje</p>
 </body>
 </html>
